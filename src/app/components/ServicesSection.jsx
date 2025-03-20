@@ -1,9 +1,20 @@
-import React from "react";
+import { RightArrow } from "@/components/ui/RightArrow";
+import Image from "next/image";
+import Link from "next/link";
 
-const ServicesSection = () => {
+const ServicesSection = async () => {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/services`);
+
+  if (!res.ok) {
+    console.error("Failed to fetch services");
+    return <p>Error loading services</p>;
+  }
+
+  const services = await res.json();
+
   return (
     <div className="grid grid-cols-12 gap-4 container mx-auto">
-      {data.map((item) => {
+      {services.map((item) => {
         return (
           <div
             className="col-span-12 md:col-span-6 lg:col-span-4 p-4 h-full border"
@@ -11,6 +22,7 @@ const ServicesSection = () => {
           >
             <figure className="w-full h-3/4 flex justify-center items-center">
               <Image
+                unoptimized
                 className="w-full h-full object-fit"
                 src={item.img}
                 width={314}
@@ -30,7 +42,7 @@ const ServicesSection = () => {
                   href={`/services/${item._id}`}
                   className="text-orange-500"
                 >
-                  <FaArrowRight />
+                  <RightArrow />
                 </Link>
               </div>
             </div>
