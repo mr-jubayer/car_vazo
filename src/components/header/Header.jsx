@@ -2,8 +2,16 @@
 
 import Link from "next/link";
 import { Button } from "../ui/Button";
+import { signOut, useSession } from "next-auth/react";
+import { useEffect } from "react";
 
 const Header = () => {
+  const session = useSession();
+
+  useEffect(() => {
+    console.log(session);
+  }, [session]);
+
   const navMenu = () => {
     return (
       <>
@@ -63,7 +71,13 @@ const Header = () => {
         </div>
         <div className="navbar-end">
           <ul className="menu menu-horizontal px-1">
-            <li>Log Out</li>
+            {session?.data?.user ? (
+              <button className="cursor-pointer" onClick={() => signOut()}>
+                logout
+              </button>
+            ) : (
+              <Link href={"/login"}>login</Link>
+            )}
           </ul>
           <Button className={"ml-2"} primaryOutline>
             Appointment

@@ -1,9 +1,12 @@
+import { Hero } from "./components/Hero";
 import ServicesSection from "./components/ServicesSection";
 
 export default function Home() {
   return (
     <div>
-      <h2 className="text-3xl font-bold my-9">Car Vazo Ready to processed..</h2>
+      <div className="mt-6" />
+      <Hero />
+      <div className="my-28" />
       <ServicesSection />
     </div>
   );
