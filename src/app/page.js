@@ -1,7 +1,7 @@
 import { Hero } from "./components/Hero";
 import ServicesSection from "./components/ServicesSection";
 
-export default function Home() {
+const Home = () => {
   return (
     <div>
       <div className="mt-6" />
@@ -10,4 +10,6 @@ export default function Home() {
       <ServicesSection />
     </div>
   );
-}
+};
+
+export default Home;

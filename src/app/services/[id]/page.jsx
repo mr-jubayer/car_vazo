@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/Button";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -46,9 +47,9 @@ const ServiceDetails = async ({ params }) => {
         {/* Right Side */}
         <div className="col-span-3 space-y-4">
           <Link href={`/checkout/${service._id}`}>
-            <button className="w-full text-white h-9 bg-orange-500">
+            <Button primaryFilled className={"w-full"}>
               Checkout
-            </button>
+            </Button>
           </Link>
           <p className="text-center text-xl font-bold">
             Price: $ {service?.price}
@@ -59,17 +60,17 @@ const ServiceDetails = async ({ params }) => {
   );
 };
 
-const generateStaticParams = async () => {
-  const result = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/services`
-  );
+// const generateStaticParams = async () => {
+//   const result = await fetch(
+//     `${process.env.NEXT_PUBLIC_BASE_URL}/api/services`
+//   );
 
-  const services = await result.json();
+//   const services = await result.json();
 
-  return services.map((service) => ({
-    id: service._id,
-  }));
-};
+//   return services.map((service) => ({
+//     id: service._id,
+//   }));
+// };
 
 export default ServiceDetails;
-export { generateStaticParams };
+// export { generateStaticParams };

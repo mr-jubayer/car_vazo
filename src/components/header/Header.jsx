@@ -8,10 +8,6 @@ import { useEffect } from "react";
 const Header = () => {
   const session = useSession();
 
-  useEffect(() => {
-    console.log(session);
-  }, [session]);
-
   const navMenu = () => {
     return (
       <>

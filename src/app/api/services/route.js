@@ -2,9 +2,9 @@ import { connectDB, collectionNames } from "@/lib/connectDB";
 import mongoose from "mongoose";
 import { NextResponse } from "next/server";
 
-export const dynamic = "force-static";
+const dynamic = "force-static";
 
-export async function GET() {
+const GET = async () => {
   try {
     await connectDB();
 
@@ -17,4 +17,6 @@ export async function GET() {
   } catch (error) {
     return NextResponse.json({ error: "Failed to fetch data", status: 500 });
   }
-}
+};
+
+export { dynamic, GET };

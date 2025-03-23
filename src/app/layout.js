@@ -1,7 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/header/Header";
-import { NextAuthProvider } from "./Providers/NextAuthProvider";
+import { NextAuthProvider } from "../Providers/NextAuthProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,7 +23,6 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <NextAuthProvider>
         <body
-          cz-shortcut-listen="true"
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
           <Header />

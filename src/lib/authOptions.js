@@ -1,11 +1,9 @@
-import { loginUser } from "@/actions/loginUser";
-import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 import GitHubProvider from "next-auth/providers/github";
-import mongoose from "mongoose";
-import { collectionNames, connectDB } from "@/lib/connectDB";
+import { connectDB } from "./connectDB";
 import { User } from "@/models/user.model";
+import { loginUser } from "@/actions/loginUser";
 
 const authOptions = {
   providers: [
@@ -51,8 +49,6 @@ const authOptions = {
 
         const isExist = await User.findOne({ email });
 
-        console.log(isExist);
-
         if (!isExist) {
           const payload = {
             name,
@@ -73,6 +69,4 @@ const authOptions = {
   },
 };
 
-const handler = NextAuth(authOptions);
-
-export { handler as GET, handler as POST };
+export { authOptions };

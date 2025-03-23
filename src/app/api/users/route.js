@@ -2,7 +2,7 @@ import { User } from "@/models/user.model";
 import { NextResponse } from "next/server";
 import bcrypt from "bcrypt";
 
-const { connectDB } = require("@/lib/connectDB");
+import { connectDB } from "@/lib/connectDB";
 
 const POST = async (req) => {
   const user = await req.json();

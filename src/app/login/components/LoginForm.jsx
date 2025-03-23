@@ -31,7 +31,6 @@ const LoginForm = () => {
       } else {
         toast.error("FAILED to Log In");
       }
-      console.log(res);
     } catch (error) {
       console.log(error);
       toast.error("FAILED to Log In");
